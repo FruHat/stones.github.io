@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин Камней</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="control-panel">
+        <div class="search-box">
+            <input type="text" id="global-search" placeholder="Поиск по товарам...">
+            <button onclick="performSearch()">🔍 Найти</button>
+        </div>
+        <button id="edit-toggle" onclick="toggleEditMode()">✏️ Режим редактирования</button>
+    </div>
+    <div class="container">
+        <!-- Левое меню -->
+        <div class="sidebar">
+            <h2>Основное меню</h2>
+            <div class="category-item has-children" onclick="toggleSubmenu(this, 'stones-menu')">Камни</div>
+            <div class="submenu" id="stones-menu">
+                <div class="category-item" onclick="showProducts('black-granite')">Черный гранит</div>
+                <div class="category-item" onclick="showProducts('marble')">Мрамор</div>
+            </div>
+            <div class="category-item" onclick="showProducts('shape')">Форма</div>
+            <div class="category-item has-children" onclick="toggleSubmenu(this, 'engraving-menu')">Гравировка</div>
+            <div class="submenu" id="engraving-menu">
+                <div class="category-item" onclick="showProducts('portraits')">Портреты</div>
+                <div class="category-item" onclick="showProducts('emblems')">Эмблемы</div>
+            </div>
+            <div class="category-item has-children" onclick="toggleSubmenu(this, 'crosses-menu')">Кресты</div>
+            <div class="submenu" id="crosses-menu">
+                <div class="category-item" onclick="showProducts('crosses')">Все кресты</div>
+            </div>
+            <h2 style="margin-top: 20px;">Дополнительное меню</h2>
+            <div class="category-item has-children" onclick="toggleSubmenu(this, 'vases-menu')">Вазы</div>
+            <div class="submenu" id="vases-menu">
+                <div class="category-item" onclick="showProducts('vases-black-granite')">Черный гранит</div>
+                <div class="category-item" onclick="showProducts('vases-marble')">Мрамор</div>
+            </div>
+            <div class="category-item has-children" onclick="toggleSubmenu(this, 'flowerbeds-menu')">Цветники</div>
+            <div class="submenu" id="flowerbeds-menu">
+                <div class="category-item" onclick="showProducts('flowerbeds-black-granite')">Черный гранит</div>
+                <div class="category-item" onclick="showProducts('flowerbeds-marble')">Мрамор</div>
+            </div>
+                       
+            <div class="service-section">
+                <h2>Дополнительные услуги</h2>
+                <div class="service-item" onclick="toggleService(this, 'installation')">
+                    <span>Установка</span>
+                    <span>500 руб</span>
+                </div>
+                <div class="service-item" onclick="toggleService(this, 'delivery')">
+                    <span>Доставка</span>
+                    <span>300 руб</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Основной контент -->
+        <div class="main-content" id="products">
+            <!-- Здесь будут отображаться товары -->
+        </div>
+
+        <!-- Корзина -->
+        <div class="cart">
+            <h2>Ваш заказ</h2>
+            <div id="order-items"></div>
+            <hr>
+            <p style="font-weight: 600;">Итого: <span id="total">0</span> руб</p>
+            <div class="cart-buttons">
+                <button id="clear-cart" onclick="clearCart()">Очистить</button>
+                <button onclick="checkout()">Оформить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
